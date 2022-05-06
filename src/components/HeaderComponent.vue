@@ -12,7 +12,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../style/vars';
-@import '../style/general';
+
     header{
         background: $card-color;
         height: 70px;
