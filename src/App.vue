@@ -22,4 +22,7 @@ export default {
 
 <style lang="scss">
     @import './style/general';
+    main{
+        margin-top: 70px;
+    }
 </style>

@@ -16,6 +16,11 @@ export default {
     header{
         background: $card-color;
         height: 70px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: 1;
         
         img{
             margin-left: 1rem;

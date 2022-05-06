@@ -1,6 +1,6 @@
 <template>
-    <section class="container">
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 gy-3 w-75 m-auto">
+    <section class="container py-4">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-3">
             <div v-for="(disc, index) in discList" :key="index" class="col">
                 <card-component :item="disc"/>
             </div>
@@ -32,6 +32,8 @@ export default {
 </script>
 
 <style lang="scss">
-
-
+    .row{
+        width: 80%;
+        margin: auto;
+    }
 </style>

@@ -1,18 +1,12 @@
 <template>
     <div class="card h-100">
         <img :src="item.poster" class="card-img-top" alt="...">
-        <div class="card-body px-0">
+        <div class="pt-3">
             <h5 class="cs_title">{{item.title}}</h5>
-            <div class="mb-2 cs_text">{{item.author}}</div>
+            <div class="cs_text">{{item.author}}</div>
             <div class="cs_text">{{item.year}}</div>
         </div>
     </div>
-        <!-- poster: 'https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg', title: 'New Jersey', author: 'Bon Jovi', genre: 'Rock', year: '1988' -->
-        <!-- <img :src="item.poster" :alt="item.title" class="img-fluid">
-        <h1>{{item.title}}</h1>
-        <div>{{item.author}}</div>
-        <div>{{item.year}}</div>
-        </div> -->
 </template>
 
 <script>
