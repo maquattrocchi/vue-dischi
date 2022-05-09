@@ -20,7 +20,7 @@ export default {
         left: 0;
         top: 0;
         right: 0;
-        z-index: 1;
+        z-index: 2;
         
         img{
             margin-left: 1rem;
