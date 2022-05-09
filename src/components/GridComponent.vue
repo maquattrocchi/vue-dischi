@@ -1,6 +1,6 @@
 <template>
     <section class="container py-4">
-        <search-component @search="setSearch($event)" :genres="genreFilter"/>
+        <search-component @search="setSearch($event)" :genres="genreFilter" :artists="artistFilter"/>
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-3 m-auto">
             <div v-for="(disc, index) in filteredDisc" :key="index" class="col">
@@ -24,22 +24,31 @@ export default {
         return{
             discList:[],
             genreFilter: [],
-            selectInput: '',
+            artistFilter: [],
+            genreInput: '',
+            artistInput: '',
         }
     },
     computed: {
         filteredDisc(){
-            if(this.selectInput === '') return this.discList
-            return this.discList.filter((el)=> el.genre === this.selectInput)
-        }
+            if(this.genreInput === '' && this.artistInput === ''){
+                return this.discList
+            }else if (this.artistInput === ''){
+                return this.discList.filter((el)=>el.genre === this.genreInput)
+            } else if (this.genreInput === ''){
+                return this.discList.filter((el)=>el.author === this.artistInput)
+            }else{
+                return this.discList.filter((el)=> el.genre === this.genreInput).filter((el)=>el.author === this.artistInput)
+            }
+        },
     },
     mounted(){
         axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((res)=>{
             this.discList = res.data.response
             this.discList.forEach((el)=>{
                 if(!this.genreFilter.includes(el.genre)) this.genreFilter.push(el.genre)
+                if(!this.artistFilter.includes(el.author)) this.artistFilter.push(el.author)
             })
-            console.log(this.genreFilter)
             console.log(res.data.response)
         }).catch((error)=>{
             console.log(error)
@@ -47,8 +56,9 @@ export default {
     },
     
     methods: {
-        setSearch(option){
-            this.selectInput = option
+        setSearch(arg){
+            this.genreInput = arg[0];
+            this.artistInput = arg[1];
         }
     }
 }
